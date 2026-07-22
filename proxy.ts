@@ -1,8 +1,8 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
-  // Skip middleware if Supabase is not configured yet
+export async function proxy(request: NextRequest) {
+  // Skip proxy if Supabase is not configured yet
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL === 'your_supabase_project_url' ||
@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  // Protected routes
+  // Protected routes - redirect unauthenticated users to login
   if (!user && pathname.startsWith('/dashboard')) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
