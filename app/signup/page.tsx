@@ -103,7 +103,7 @@ export default function SignupPage() {
               <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
             </svg>
           </div>
-          <span className="auth-logo-text gradient-text">AI Dashboard</span>
+          <span className="auth-logo-text gradient-text">Mahbub Sufian Ai</span>
         </div>
 
         <h1 className="auth-title">Create account</h1>

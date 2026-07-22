@@ -69,7 +69,7 @@ export default function Sidebar() {
             <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
           </svg>
         </div>
-        <span className="logo-text gradient-text">AI Dashboard</span>
+        <span className="logo-text gradient-text">Mahbub Sufian Ai</span>
       </div>
 
       {/* Nav */}
