@@ -83,13 +83,6 @@ export default async function DashboardPage() {
       color: '#f59e0b',
       bg: 'rgba(245, 158, 11, 0.1)',
     },
-    {
-      label: 'AI Model',
-      value: 'Gemini 2.5 Flash',
-      icon: '✨',
-      color: '#10b981',
-      bg: 'rgba(16, 185, 129, 0.1)',
-    },
   ]
 
   return (

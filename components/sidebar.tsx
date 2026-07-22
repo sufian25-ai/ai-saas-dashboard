@@ -94,10 +94,6 @@ export default function Sidebar() {
 
       {/* Bottom */}
       <div className="sidebar-bottom">
-        <div className="ai-status">
-          <div className="ai-status-dot" />
-          <span>Gemini 2.5 Flash Connected</span>
-        </div>
         <button onClick={handleLogout} className="logout-btn" id="logout-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
