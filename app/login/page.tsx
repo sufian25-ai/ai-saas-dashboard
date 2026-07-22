@@ -321,18 +321,14 @@ export default function LoginPage() {
           background: var(--bg-card-hover);
           border-color: var(--text-muted);
         }
-        .auth-footer {
-          text-align: center;
-          font-size: 13px;
-          color: var(--text-secondary);
-          margin-top: 24px;
-        }
-        .auth-link {
-          color: var(--accent-purple-light);
-          text-decoration: none;
-          font-weight: 500;
-        }
+        .auth-footer { text-align: center; font-size: 13px; color: var(--text-secondary); margin-top: 24px; }
+        .auth-link { color: var(--accent-purple-light); text-decoration: none; font-weight: 500; }
         .auth-link:hover { text-decoration: underline; }
+        @media (max-width: 480px) {
+          .auth-container { padding: 16px; }
+          .auth-card { padding: 24px; }
+          .auth-title { font-size: 22px; }
+        }
       `}} />
     </div>
   )

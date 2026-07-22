@@ -184,12 +184,27 @@ export default async function DashboardPage() {
           padding: 32px;
           max-width: 1100px;
         }
+        @media (max-width: 768px) {
+          .page-container {
+            padding: 16px;
+          }
+        }
         .page-header {
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
           margin-bottom: 32px;
           gap: 16px;
+        }
+        @media (max-width: 600px) {
+          .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .new-chat-btn {
+            width: 100%;
+            justify-content: center;
+          }
         }
         .page-title {
           font-size: 28px;
@@ -221,6 +236,11 @@ export default async function DashboardPage() {
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           gap: 16px;
           margin-bottom: 32px;
+        }
+        @media (max-width: 600px) {
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
         }
         .stat-card {
           background: var(--bg-card);

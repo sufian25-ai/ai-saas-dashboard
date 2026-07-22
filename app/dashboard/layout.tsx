@@ -33,6 +33,12 @@ export default async function DashboardLayout({
           min-height: 100vh;
           overflow-x: hidden;
         }
+        @media (max-width: 768px) {
+          .dashboard-main {
+            margin-left: 0;
+            padding-top: 60px; /* Space for mobile header */
+          }
+        }
       `}} />
     </div>
   )

@@ -233,4 +233,9 @@ const authStyles = `
   .auth-link { color: var(--accent-purple-light); text-decoration: none; font-weight: 500; }
   .auth-link:hover { text-decoration: underline; }
   .success-icon { width: 64px; height: 64px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; color: var(--success); }
+  @media (max-width: 480px) {
+    .auth-container { padding: 16px; }
+    .auth-card { padding: 24px; }
+    .auth-title { font-size: 22px; }
+  }
 `

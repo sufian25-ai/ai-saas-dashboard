@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -51,6 +52,12 @@ export default function Sidebar() {
   const pathname = usePathname()
   const router = useRouter()
   const supabase = createClient()
+  const [isOpen, setIsOpen] = useState(false)
+
+  // Close sidebar on mobile when navigating
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -59,8 +66,30 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="sidebar">
-      {/* Logo */}
+    <>
+      {/* Mobile Hamburger Button */}
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="mobile-menu-btn"
+        aria-label="Toggle Menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      {/* Overlay for mobile */}
+      {isOpen && (
+        <div 
+          className="sidebar-overlay"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      <aside className={cn("sidebar", isOpen && "sidebar-open")}>
+        {/* Logo */}
       <div className="sidebar-logo">
         <div className="logo-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -118,6 +147,44 @@ export default function Sidebar() {
           top: 0;
           bottom: 0;
           z-index: 50;
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu-btn {
+          display: none;
+          position: fixed;
+          top: 16px;
+          left: 16px;
+          z-index: 60;
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          color: var(--text-primary);
+          padding: 8px;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+        .sidebar-overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(4px);
+          z-index: 40;
+        }
+        @media (max-width: 768px) {
+          .sidebar {
+            transform: translateX(-100%);
+          }
+          .sidebar.sidebar-open {
+            transform: translateX(0);
+          }
+          .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .sidebar-overlay {
+            display: block;
+          }
         }
         .sidebar-logo {
           display: flex;
@@ -231,5 +298,6 @@ export default function Sidebar() {
         }
       `}} />
     </aside>
+  </>
   )
 }
